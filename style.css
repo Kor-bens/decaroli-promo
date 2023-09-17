@@ -1,9 +1,16 @@
+@font-face {
+    font-family: 'promo'; 
+    src: url('ressources/font-family/OhMyBaby-x3nLr.ttf') format('truetype'); /
+   
+    
+}
 body{
     margin: 0;
     padding: 0;
     background: rgb(238,174,202);
 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 overflow-x: hidden;
+font-family: 'promo';
 }
 h1{
     width: 25%;
@@ -105,12 +112,12 @@ img{
         /* gap: 10%; */
     }
     h1{
-        font-size: 2em;
-        width: 32%;
+        font-size: 3em;
+        width: 55%;
     }
 
     img{
-        width: 40%;
+        width: 60%;
        }
     
 
