@@ -24,7 +24,7 @@ h1{
         color: rgb(255, 255, 255);
     text-align: center;
     font-size: 4em;
-    
+    -webkit-font-smoothing: antialiased;
     /* background: radial-gradient(circle, rgba(238,174,202,1) 18%, rgba(148,187,233,1) 73%); */
 }
 
