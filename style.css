@@ -5,15 +5,14 @@
 /* *{
     border: 1px solid red;
 } */
-html, body {
-    overflow-x: hidden;
-}
+
 body{
     margin: 0;
     padding: 0;
     background: rgb(238,174,202);
 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 font-family: 'promo';
+overflow-x: hidden;
 }
 h1{
     width: 50%;
@@ -86,10 +85,10 @@ img{
 /* Animation de mouvement circulaire sur elle-même */
 @keyframes rotateCircular {
     0%, 50% {
-        transform: rotate(6deg);
+        transform: rotate(2deg);
     }
     0%, 100% {
-        transform: rotate(-6deg); 
+        transform: rotate(-2deg); 
     }
 }
 
@@ -97,7 +96,7 @@ img{
 .image.circular {
     width: auto;
     max-width: 100%;
-    animation: rotateCircular 3s linear infinite; 
+    animation: rotateCircular 10s linear infinite; 
 }
 
 
@@ -115,6 +114,11 @@ img{
   img{
     width: 80%;
    }
+   .image.circular {
+    width: auto;
+    max-width: 100%;
+    animation: rotateCircular 4s linear infinite; 
+}
 }
 
 
@@ -156,7 +160,11 @@ img{
     #contain-images .image:nth-child(n+5) {
         justify-content: center;
     }
-    /* Ajoutez d'autres styles spécifiques aux écrans de taille moyenne ici */
+    .image.circular {
+        width: auto;
+        max-width: 100%;
+        animation: rotateCircular 4s linear infinite; 
+    }
 }
 
 
@@ -194,5 +202,10 @@ img{
     }
     #contain-images .image:nth-child(n+5) {
         justify-content: center;
+    }
+    .image.circular {
+        width: auto;
+        max-width: 100%;
+        animation: rotateCircular 4s linear infinite; 
     }
 }
