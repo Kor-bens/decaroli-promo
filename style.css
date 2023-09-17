@@ -2,9 +2,9 @@
     font-family: 'promo'; 
     src: url('ressources/font-family/OhMyBaby-x3nLr.ttf') format('truetype'); /
 }
-*{
+/* *{
     border: 1px solid red;
-}
+} */
 html, body {
     overflow-x: hidden;
 }
