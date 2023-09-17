@@ -1,19 +1,22 @@
 @font-face {
     font-family: 'promo'; 
     src: url('ressources/font-family/OhMyBaby-x3nLr.ttf') format('truetype'); /
-   
-    
+}
+*{
+    border: 1px solid red;
+}
+html, body {
+    overflow-x: hidden;
 }
 body{
     margin: 0;
     padding: 0;
     background: rgb(238,174,202);
 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-overflow-x: hidden;
 font-family: 'promo';
 }
 h1{
-    width: 25%;
+    width: 50%;
     margin: 3% auto;
     background: linear-gradient(90deg, rgba(238,174,202,1) 18%, rgba(121,174,237,1) 72%);
         -webkit-background-clip: text;
@@ -33,6 +36,7 @@ img{
 #contain-images{
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
+    width: 100%;
     /* gap: 10%; */
     
 }
@@ -81,27 +85,41 @@ img{
 
 /* Animation de mouvement circulaire sur elle-même */
 @keyframes rotateCircular {
-    0% {
-        transform: rotate(0deg);
+    0%, 50% {
+        transform: rotate(6deg);
     }
-    50% {
-        transform: rotate(2deg);
+    0%, 100% {
+        transform: rotate(-6deg); 
     }
 }
 
-/* Appliquez l'animation aux images après l'apparition */
+/* Applique l'animation aux images après l'apparition */
 .image.circular {
-    
-    animation: rotateCircular 3s linear infinite; /* Ajustez la durée et d'autres propriétés selon vos préférences */
+    width: auto;
+    max-width: 100%;
+    animation: rotateCircular 3s linear infinite; 
 }
 
 
-/* Media query pour les petits écrans mobiles (ex. : iPhone SE) */
-@media (max-width: 320px) {
-    /* Styles spécifiques aux petits écrans mobiles */
-   
-    /* Ajoutez d'autres styles spécifiques aux petits écrans ici */
+
+
+
+
+/* Media query pour les grands écrans mobiles (ex. : iPhone 11 Pro Max, Galaxy S21) */
+@media (min-width: 768px) and (max-width:998px) {
+  h1{
+    font-size:3em;
+    width: 50%;
+  }
+
+  img{
+    width: 80%;
+   }
 }
+
+
+
+
 
 /* Media query pour les écrans mobiles de taille moyenne (ex. : iPhone 8, XR) */
 @media (min-width: 321px) and (max-width: 767px) {
@@ -117,7 +135,7 @@ img{
     }
 
     img{
-        width: 60%;
+        width: 80%;
        }
     
 
@@ -141,12 +159,40 @@ img{
     /* Ajoutez d'autres styles spécifiques aux écrans de taille moyenne ici */
 }
 
-/* Media query pour les grands écrans mobiles (ex. : iPhone 11 Pro Max, Galaxy S21) */
-@media (min-width: 768px) {
-    /* Styles spécifiques aux grands écrans mobiles */
-    body {
-        background-color: #e0e0e0;
-        font-size: 16px;
+
+
+/* Media query pour les petits écrans mobiles (ex. : iPhone SE) */
+@media (max-width: 320px) {
+    #contain-images{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        /* gap: 10%; */
     }
-    /* Ajoutez d'autres styles spécifiques aux grands écrans mobiles ici */
+    h1{
+        font-size:2em;
+        width: 80%;
+    }
+
+    img{
+        width: 80%;
+       }
+    
+
+    #contain-images .image:first-child {
+    
+        justify-content: center;
+    }
+    
+    #contain-images .image:nth-child(n+2) {
+        justify-content: center;
+    }
+    #contain-images .image:nth-child(n+3) {
+        justify-content: center;
+    }
+    #contain-images .image:nth-child(n+4) {
+        justify-content: center;
+    }
+    #contain-images .image:nth-child(n+5) {
+        justify-content: center;
+    }
 }
