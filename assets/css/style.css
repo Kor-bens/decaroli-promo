@@ -99,6 +99,16 @@ img{
     animation: rotateCircular 10s linear infinite; 
 }
 
+#footer{
+    display: flex;
+    background-color: black;
+    justify-content: center;
+}
+
+#logo-decaroli{
+    margin:0 auto;
+    width: 10%;
+}
 
 
 
