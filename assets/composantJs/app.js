@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fadeInImage(image) {
         setTimeout(function () {
             image.style.display = "flex";
-            image.classList.add("circular"); 
+            image.classList.add("circular");
         }, 1000); // Ajustez la valeur 1000 (en millisecondes) pour ajuster le délai d'apparition
     }
 
@@ -14,4 +14,59 @@ document.addEventListener("DOMContentLoaded", function () {
     images.forEach(function (image) {
         fadeInImage(image);
     });
+});
+
+let divFleche = document.querySelector("#div-fleche");
+
+
+let cercle = document.createElement("div");
+cercle.id="cercle";
+divFleche.appendChild(cercle);
+
+cercle.addEventListener("click", scrollTop);
+
+let fleche = document.createElement("img");
+fleche.src = "../../assets/ressources/images/fleche.png";
+fleche.id ="fleche";
+cercle.appendChild(fleche);
+
+fleche.addEventListener("click", scrollTop);
+
+window.addEventListener('scroll', toggleScrollTop);
+console.log(window.scrollY);
+// Fonction pour faire défiler vers le haut de la page
+function scrollTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function toggleScrollTop() {
+    if (window.scrollY > 600) {
+                cercle.classList.add('active');
+                cercle.style.display = "flex";
+                cercle.style.alignItems = "center";
+                cercle.style.justifyContent = "center";
+                console.log("cercle visible")
+                
+            }  if(window.scrollY <= 550){
+                cercle.style.display ="none";
+                console.log("cercle disparait")
+            }
+    
+    if (window.scrollY > 600) {
+                fleche.classList.add('active');
+                fleche.style.display ="block";
+                console.log("fleche visible")
+                
+            }  if(window.scrollY <= 550){
+                fleche.style.display ="none";
+                console.log("fleche disparait")
+            }
+}
+
+
+window.addEventListener('scroll', function() {
+    console.log(window.scrollY);
 });

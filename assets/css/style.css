@@ -15,7 +15,7 @@ font-family: 'promo';
 overflow-x: hidden;
 }
 h1{
-    width: 50%;
+    width: 100%;
     margin: 3% auto;
     background: linear-gradient(90deg, rgba(238,174,202,1) 18%, rgba(121,174,237,1) 72%);
         -webkit-background-clip: text;
@@ -92,6 +92,7 @@ img{
     }
 }
 
+
 /* Applique l'animation aux images après l'apparition */
 .image.circular {
     width: auto;
@@ -107,10 +108,58 @@ img{
 
 #logo-decaroli{
     margin:0 auto;
-    width: 10%;
+    width: 13%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 
+
+#fleche{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    width: 40px;
+    position: fixed;
+    cursor: pointer;
+}
+
+#fleche.active {
+    opacity: 1;
+    
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px); /* Ajustez la distance de l'animation selon vos préférences */
+    }
+}
+#cercle {
+    display: none;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 100px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+#cercle.active {
+    opacity: 1;
+    animation: bounce 0.5s infinite alternate;
+}
+
+#cercle:hover {
+    opacity: 0.5;
+}
 
 
 

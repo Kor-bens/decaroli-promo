@@ -18,9 +18,14 @@
         <div class="image"><img src="../../assets/ressources/images/alphaNovabb.png" alt="alphaNovabb"></div>
     </div>
 
+    <div id="div-fleche">
+      
+        </div>
+
     <div id="footer">
         <img id="logo-decaroli" src="../../assets/ressources/images/logoDecaroli.png" alt="logoDecaroli">
     </div>
+    
     
     <script src="../../assets/composantJs/app.js"></script>
 </body>
