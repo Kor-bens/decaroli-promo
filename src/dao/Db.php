@@ -4,26 +4,19 @@
 class Db {
     private PDO $db;
 
-    
-       
-    
-        public function __construct() {
-            try {
-                $this->db = new PDO('mysql:host=localhost;dbname=decaroli;charset=utf8', 'root', '');
-                // Active les exceptions PDO pour la gestion des erreurs.
-                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch(PDOException $e) {
-                // En cas d'erreur de connexion, affichez un message d'erreur.
-                die('Erreur de connexion à la base de données : ' . $e->getMessage());
-            }
+    public function __construct() {
+        try {
+            $this->db = new PDO('mysql:host=localhost;dbname=decaroli;charset=utf8', 'root', '');
+            echo 'Connexion réussie à la base de données.';
+        } catch(PDOException $e) {
+            echo 'Erreur de connexion PDO : ' . $e->getMessage();
         }
-    
-        public function getDb() {
-            return $this->db;
-        }
-    
-    
+    }   
 
+    public function getDb(){
+        return $this->db;
+    }
+}
 //     public function __construct(){
         
 // $serveur = "localhost"; // Remplacez par le nom du serveur MySQL.
@@ -45,10 +38,13 @@ class Db {
 //     mysqli_close($connexion);
 // }
 
+
+// }
+
+
 // public function getDb(){
 //       return $this->db;
 
 
 //     }
-}
-
+    

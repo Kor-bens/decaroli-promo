@@ -17,10 +17,14 @@
 <?php
 // Récupérez le message d'erreur depuis la session
 $errorMessage = $_SESSION['errorMessage'] ?? "";
+$nom = $_SESSION['nom'] ?? "";
+$mdp = $_SESSION['mdp'] ?? "";
 
 if (!empty($errorMessage)) {
 ?>
     <div class="alert alert-danger" role="alert"><?= $errorMessage ?></div>
+    <!-- <div class="alert alert-danger" role="alert"><?= $nom ?></div>
+    <div class="alert alert-danger" role="alert"><?= $mdp ?></div> -->
 <?php
 }
 ?>

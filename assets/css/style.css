@@ -143,7 +143,7 @@ img{
     background-color: white;
     border-radius: 100px;
     position: fixed;
-    bottom: 20px;
+    bottom: 60px;
     right: 20px;
     cursor: pointer;
     align-items: center;
@@ -266,5 +266,8 @@ img{
         width: auto;
         max-width: 100%;
         animation: rotateCircular 4s linear infinite; 
+    }
+    #cercle{
+        display: none;
     }
 }

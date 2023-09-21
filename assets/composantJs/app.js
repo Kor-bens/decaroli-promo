@@ -43,28 +43,30 @@ function scrollTop() {
 }
 
 function toggleScrollTop() {
-    if (window.scrollY > 600) {
-                cercle.classList.add('active');
-                cercle.style.display = "flex";
-                cercle.style.alignItems = "center";
-                cercle.style.justifyContent = "center";
-                console.log("cercle visible")
-                
-            }  if(window.scrollY <= 550){
-                cercle.style.display ="none";
-                console.log("cercle disparait")
-            }
-    
-    if (window.scrollY > 600) {
-                fleche.classList.add('active');
-                fleche.style.display ="block";
-                console.log("fleche visible")
-                
-            }  if(window.scrollY <= 550){
-                fleche.style.display ="none";
-                console.log("fleche disparait")
-            }
+    // Ne pas activer sur les écrans de largeur <= 768 pixels
+    if (window.innerWidth > 768) { 
+        if (window.scrollY > 600) {
+            cercle.classList.add('active');
+            cercle.style.display = "flex";
+            cercle.style.alignItems = "center";
+            cercle.style.justifyContent = "center";
+            console.log("cercle visible");
+        } else {
+            cercle.style.display = "none";
+            console.log("cercle disparait");
+        }
+
+        if (window.scrollY > 600) {
+            fleche.classList.add('active');
+            fleche.style.display = "block";
+            console.log("fleche visible");
+        } else {
+            fleche.style.display = "none";
+            console.log("fleche disparait");
+        }
+    }
 }
+
 
 
 window.addEventListener('scroll', function() {

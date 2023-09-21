@@ -5,7 +5,7 @@
 <body>
   <div id="navbar">
     <ul>
-        <li><a href="index.html">Page promo</a></li>
+        <li><a href="/" target="_blank">Page promo</a></li>
         <li><a href="modif-promo">Modifier la page</a></li>
         
     </ul>
