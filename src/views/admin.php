@@ -1,15 +1,56 @@
-<?php require_once "common/head_admin.php" ?>
+<?php require_once "common/head_admin.php";
+
+// var_dump($_SESSION['nom']);
+// var_dump($_SESSION);
+
+// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion(retour navigateur)
+if (!isset($_SESSION['nom'])) {
+  header("Location: /login/admin");
+  exit;
+}
+ ?>
 <link rel="stylesheet" href="../../assets/css/admin.css">
-<title>admin-decaroli</title>
+<title>DECAROLI - ADMIN</title>
 </head>
 <body>
-  <div id="navbar">
+<div id="navbar">
     <ul>
         <li><a href="/" target="_blank">Page promo</a></li>
-        <li><a href="modif-promo">Modifier la page</a></li>
-        
+        <?php
+        if (isset($_SESSION['nom'])) {
+          $nom = $_SESSION['nom'] ?? "";
+            echo "<li><a href='/deconnexion'>Se Déconnexion</a></li>";
+            echo "<li>Bienvenue " . strtoupper($nom) . "</li>";;
+        } else {
+          echo 'Les variables de session ont été supprimées.';
+         }
+        ?>  
     </ul>
-  </div>
-    
+</div>
+
+<div id="container-form">
+    <form id="form" action="/traitement-titre" method="POST">
+      <label for="titre">Modifier le titre</label><br>
+      <input id="input-titre" type="text" name="titre" value="<?= $donneesOrigine['titre'] ?>"><br>
+      <button type="submit">Modifier</button>
+    </form>
+
+    <form id="form-image" action="/traitement-image" method="POST" enctype="multipart/form-data">
+      <label for="image">Ajouter des images</label><br>
+      <button id="bouton-image">Plus d'image</button>
+      <input type="file" name="image" accept="image/*">
+      <input type="submit" value="Ajouter">
+    </form>
+
+    <form action="/traitement-background" method="POST">
+     <label for="background">Modifier le body</label><br>
+     <input type="text" name="background" value="<?= $donneesOrigine['bkgd_color'] ?>"><br>
+     <button type ="submit">Modifier</button>
+    </form>
+</div>
+
+
+
+<script src="../../assets/composantJs/admin.js"></script>
 </body>
 </html>

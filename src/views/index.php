@@ -6,9 +6,16 @@
     <title>DECAROLI</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
+ <style>
+        body {
+            background: <?= $donneesOrigine['bkgd_color'] ?>;
+        }
+    </style>  
 <body>
+    
 
-    <h1>Nos promotions de Septembre</h1>
+<h1><?= $donneesOrigine['titre'] ?></h1>
+    
 
     <div id="contain-images">
         <div class="image"><img src="../../assets/ressources/images/bbKlorane.png" alt="bebe-laboratoire"></div>

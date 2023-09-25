@@ -50,3 +50,9 @@ input{
 #button:hover{
     background-color: rgb(97, 89, 89);
 }
+
+.message-alert{
+    color:red;
+    font-family: 'montserrat';
+    font-size: 1.3em;
+}

@@ -1,34 +1,30 @@
-<?php require_once "common/head_admin.php" ?>
-<link rel="stylesheet" href="../../assets/css/login.css?v=<?php echo time(); ?>">
-<title>login-admin-decaroli</title>
+<?php 
+require_once "common/head_admin.php";
+?>
+<link rel="stylesheet" href="../../assets/css/login.css?v=<?= time(); ?>">
+<title>DECAROLI - login</title>
 </head>
 <body>
 
 <div id="container-form">        
-<h1>Connexion</h1>
+    <h1>Connexion</h1>
 
-<?php if (!empty($messageErr)): ?>
-    <div id="error-messages">
-        <?php foreach ($messageErr as $err): ?>
-            <div class="messagealert" ><?= $err ?></div>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
-<?php
-// Récupérez le message d'erreur depuis la session
-$errorMessage = $_SESSION['errorMessage'] ?? "";
-$nom = $_SESSION['nom'] ?? "";
-$mdp = $_SESSION['mdp'] ?? "";
+ 
 
-if (!empty($errorMessage)) {
-?>
-    <div class="alert alert-danger" role="alert"><?= $errorMessage ?></div>
-    <!-- <div class="alert alert-danger" role="alert"><?= $nom ?></div>
-    <div class="alert alert-danger" role="alert"><?= $mdp ?></div> -->
-<?php
-}
-?>
+    <!-- <?php 
+     echo 'ID de session (récupéré via $_COOKIE) : <br>' . $_COOKIE['PHPSESSID'];
+    ?> -->
 
+    <?php if (!empty(Message::getErrorMessage())): ?>
+        <div id="container-message">
+            <?php foreach (Message::getErrorMessage() as $err): ?>
+                <div class="message-alert"><?= $err ?></div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?> 
+        <?php if(isset($errorMessageVide)): ?>
+            <div class="message-alert"><?= $errorMessageVide ?></div>
+        <?php endif; ?>
 
     <form id="loginForm" action="/connexion" method="post">
         <label for="nom">Nom d'utilisateur :</label>
@@ -42,6 +38,7 @@ if (!empty($errorMessage)) {
         <input type="submit" id="button" value="Se connecter">
     </form>
 </div>
-    
+
+
 </body>
 </html>
