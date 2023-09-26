@@ -8,6 +8,8 @@ class CntrlAppli {
             public function afficherPagePromo()
         {
             $dao = new DaoAppli();
+            $infoImages = $dao->getImages();
+            $dao = new DaoAppli();
             $donneesOrigine = [
                 'titre' => $dao->getTitre(),
                 'bkgd_color' => $dao->getCouleur()
@@ -28,9 +30,11 @@ class CntrlAppli {
         public function connexion()
         {
             require_once 'src/dao/DaoAppli.php';
+
             
-            $nom = htmlspecialchars($_POST['nom']);
-            $mdp = htmlspecialchars($_POST['mdp']);
+            
+            $nom = isset($_POST['nom']) ? trim(addcslashes(strip_tags($nom), '\x00..\x1F')) : '';
+            $mdp = isset($_POST['mdp']) ? trim(addcslashes(strip_tags($mdp), '\x00..\x1F')) : '';
 
             // Réinitialisez les messages d'erreur à chaque nouvelle tentative de connexion
             Message::setErrorMessage([]);
@@ -56,22 +60,18 @@ class CntrlAppli {
                 //     $errorMessage[] = Message::INP_ERR_MDP_CHAR_SPE;
                 // }
             }
-            
-            // Récupérez les messages d'erreur du DaoAppli
+
             
             $dao = new DaoAppli();
-            $errorMessageFromDao = $dao->connexionUser();
+            $errorMessageFromDao = $dao->connexionUser($nom, $mdp); 
 
             // Ajoutez les messages d'erreur du DaoAppli aux messages d'erreur existants
             $errorMessage = array_merge($errorMessage, $errorMessageFromDao);
             Message::setErrorMessage($errorMessage);
             
             if (!empty($errorMessage)) {
-               
                 require_once 'src/views/login.php';
-            } else {
-                $dao = new DaoAppli();
-                $dao->connexionUser(); 
+            } else { 
                 // Redirigez l'utilisateur après une connexion réussie
                 header('Location: /admin');
                 exit;
@@ -136,9 +136,49 @@ class CntrlAppli {
         public function traitementImage(){
             $dao = new DaoAppli();
             $donneesOrigine = [
-                'titre' => $dao->getTitre(),
+                'titre'      => $dao->getTitre(),
                 'bkgd_color' => $dao->getCouleur()
-            ];
+            ]; 
+        
+            // Initialisez le tableau des informations sur les images
+            $infoImages = $dao->getImages();
+            
+            if (isset($_FILES['image'])) {
+                // Informations sur le fichier téléchargé
+                $nomFichier = $_FILES['image']['name']; // Nom du fichier image
+                $typeFichier = $_FILES['image']['type'];
+                $tailleFichier = $_FILES['image']['size'];
+                $fichierTemporaire = $_FILES['image']['tmp_name'];
+        
+                // Vérifier que le fichier est une image ex: le type
+                $extensionsAutorisées = array('image/jpeg', 'image/png', 'image/gif');
+                if (!in_array($typeFichier, $extensionsAutorisées)) {
+                    echo "Seules les images au format JPEG, PNG ou GIF sont autorisées."; 
+                    require_once 'src/views/admin.php';
+                }
+        
+                // Générez un nom unique pour le fichier pour éviter l'écrasement d'image
+                $nomUnique = uniqid() . '_' . $nomFichier;  
+                $cheminStockage = 'assets/ressources/images/' . $nomUnique;
+        
+                // Déplacez le fichier téléchargé vers le répertoire de stockage des images
+                if (move_uploaded_file($fichierTemporaire, $cheminStockage)) {
+                    // Le téléchargement a réussi, vous pouvez maintenant insérer le nom du fichier dans la base de données
+                    $idPage = 1; // Remplacez par l'ID de la page appropriée
+                    $dao->traitementImage($nomUnique, $nomFichier, $idPage); 
+                    echo $nomFichier;
+        
+                    // Ajoutez également les informations sur l'image téléchargée à la liste des images
+                    $infoImages[] = [
+                        'nom_image' => $nomUnique, // Utilisez le nom unique du fichier
+                        'url' => $cheminStockage // Utilisez le chemin de stockage complet
+                    ];
+                }
+            }
+            
+            // Maintenant, vous pouvez continuer à afficher la page admin
             require_once 'src/views/admin.php';
-           }
+        }
+
+       
 }

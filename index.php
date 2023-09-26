@@ -27,6 +27,7 @@ else if ($method == 'GET'  && $route == '/deconnexion')             $cntrlAppli-
 else if ($method == 'POST' && $route == '/traitement-titre')        $cntrlAppli->modifTitre(); 
 else if ($method == 'POST' && $route == '/traitement-background')   $cntrlAppli->modifBackground();  
 else if ($method == 'POST' && $route == '/traitement-image')        $cntrlAppli->traitementImage();    
+   
 
 
 // else{

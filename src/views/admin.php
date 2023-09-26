@@ -35,12 +35,16 @@ if (!isset($_SESSION['nom'])) {
       <button type="submit">Modifier</button>
     </form>
 
-    <form id="form-image" action="/traitement-image" method="POST" enctype="multipart/form-data">
-      <label for="image">Ajouter des images</label><br>
-      <button id="bouton-image">Plus d'image</button>
-      <input type="file" name="image" accept="image/*">
-      <input type="submit" value="Ajouter">
+
+    <button id="bouton-clone-form">Ajouter des images</button>
+<div id="conteneur-formulaire">
+    <form class="formulaire-image" action="/traitement-image" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Ajouter">
+        <button class="supprimer-formulaire">Supprimer</button>
     </form>
+</div>
+    
 
     <form action="/traitement-background" method="POST">
      <label for="background">Modifier le body</label><br>
